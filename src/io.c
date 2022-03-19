@@ -572,7 +572,7 @@ static void *ssl_write(void *arg)
 static void *if_config(void *arg)
 {
 	struct tunnel *tunnel = (struct tunnel *) arg;
-	int timeout = 60000000; // one minute
+	int timeout = 80000000; // one minute
 
 	log_debug("%s thread\n", __func__);
 
@@ -590,7 +590,7 @@ static void *if_config(void *arg)
 			log_error("Timed out waiting for the ppp interface to be UP.\n");
 			break;
 		}
-		log_debug("%s: not ready yet...\n", __func__);
+		log_error("%s: not ready yet...\n", __func__);
 		timeout -= 200000;
 		usleep(200000);
 	}
